@@ -10,7 +10,7 @@ jobs:
     runs-on: [ ubuntu-latest ]
     steps:
       - name: Checkout Repo
-        user: action/checkout@v2
+        uses: action/checkout@v2
 
       - name: Hetup Hugo
         uses: peaceiris/action-hugo@v2
