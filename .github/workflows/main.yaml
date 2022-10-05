@@ -18,7 +18,7 @@ jobs:
           hugo-version: "0.88.0"
 
       - name: Jalankan Hugo
-        run: Hugo --minify
+        run: hugo --minify
 
       - name: 'Deploy ke Netlify'
         uses: jsmrcaga/action-netlify-deploy@v1.2.0
