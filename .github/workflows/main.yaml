@@ -1,29 +1,29 @@
-name: Build Dengan Cron
+name: BUILD DENGAN CRON
 on:
   schedule:
     - cron: "0 0 * * *"
     workflow_dispatch:
 
-  jobs:
-    build-and-deploy:
-      name: Build dan Deploy
-      run-on: [ ubuntu-latest ]
-      steps:
-        - name: Checkout Repo
-          user: action/checkout@v2
+jobs:
+  build-and-deploy:
+    name: Build dan Deploy
+    run-on: [ ubuntu-latest ]
+    steps:
+      - name: Checkout Repo
+        user: action/checkout@v2
 
-        - name: Hetup Hugo
-          uses: peaceiris/action-hugo@v2
-          with:
-            hugo-version: "0.88.0"
+      - name: Hetup Hugo
+        uses: peaceiris/action-hugo@v2
+        with:
+          hugo-version: "0.88.0"
 
-        - name: Jalankan Hugo
-          run: Hugo
+      - name: Jalankan Hugo
+        run: Hugo
 
-        - name: 'Deploy ke Netlify'
-          uses: jsmrcaga/action-netlify-deploy@v1.2.0
-          with:
-            NETLIFY_AUTH_TOKEN: ${{ screts.NETLIFY_TOKEN }}
-            NETLIFY_SITE_ID: bfn3XSeu0g4dkrwA_GzwaZkAC8UvTzVNRzfrq8aRYcs
-            NETLIFY_DEPLOY_TO_PROD: true
-            build_directory: 'public'
+      - name: 'Deploy ke Netlify'
+        uses: jsmrcaga/action-netlify-deploy@v1.2.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ screts.NETLIFY_TOKEN }}
+          NETLIFY_SITE_ID: bfn3XSeu0g4dkrwA_GzwaZkAC8UvTzVNRzfrq8aRYcs
+          NETLIFY_DEPLOY_TO_PROD: true
+          build_directory: 'public'
